@@ -1,0 +1,15 @@
+<%= form_tag github_apis_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search], placeholder: 'Enter comma separated Github usernames', size: 100 %>
+      <%= submit_tag "Get Users Public Commits Counts", :name => nil %>
+    </p>
+<% end %>
+
+<br>
+
+<% unless @users.nil? %>
+    <% @users.each do |user_hash| %>
+        <%= user_hash[:user_name] %> - <%= user_hash[:commits_count] %>
+        <br>
+    <% end %>
+<% end %>
